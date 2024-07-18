@@ -1,7 +1,6 @@
 #include "Vortex/Application.h"
-#include "Vortex/Logging.h"
-#include <thread>
-#include <chrono>
+
+#include "VortexPCH.h"
 
 namespace Vortex {
 

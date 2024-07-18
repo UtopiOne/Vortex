@@ -1,5 +1,7 @@
 #include "Vortex/Logging.h"
 
+#include "VortexPCH.h"
+
 #include <spdlog/spdlog.h>
 #include <spdlog/common.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
