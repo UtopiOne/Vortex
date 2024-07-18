@@ -12,7 +12,7 @@ def build(cmd_args: [str]) -> int:
         cmake_args.append("-DCMAKE_EXPORT_COMPILE_COMMANDS=ON")
 
     result: int = subprocess.run(cmake_args).returncode
-    result: int = subprocess.run(["cmake", "--build", "build/"]).returncode
+    result = subprocess.run(["cmake", "--build", "build/"]).returncode
 
     return result
 

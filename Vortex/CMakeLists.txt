@@ -17,14 +17,15 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/Vortex/thirdparty/spdlog/CMakeLists.txt")
     message(FATAL_ERROR "The submodules were not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
 endif()
 
-add_subdirectory(thirdparty/spdlog)
+find_package(spdlog REQUIRED)
 
 set(VORTEX_DIR ${PROJECT_SOURCE_DIR}/Vortex)
 add_library(vortex STATIC)
 target_sources(vortex PRIVATE 
-    ${VORTEX_DIR}/src/Core.cpp
+    ${VORTEX_DIR}/src/Vortex/Core.cpp
+    ${VORTEX_DIR}/src/Vortex/Logging.cpp
 )
 target_include_directories(vortex PUBLIC
     ${VORTEX_DIR}/include
 )
-target_link_libraries(vortex PRIVATE spdlog)
+target_link_libraries(vortex PRIVATE spdlog::spdlog)
