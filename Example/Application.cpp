@@ -1,10 +1,21 @@
 #include "Vortex.h"
-#include "Vortex/Logging.h"
+
+class Application : public Vortex::Application {
+public:
+    Application() {
+        VT_INFO("Welcome to Example Application");
+    }
+
+    ~Application() {
+        VT_INFO("Goodbye from Example Application");
+    }
+
+    void Run() {
+        std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+    }
+};
 
 int main() {
-    Vortex::Logger::Init();
-
-    VT_TRACE("Welcome to Vortex");
-
-    return 0;
+    auto app = std::make_unique<Application>();
+    app->Run();
 }

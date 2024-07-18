@@ -24,6 +24,7 @@ add_library(vortex STATIC)
 target_sources(vortex PRIVATE 
     ${VORTEX_DIR}/src/Vortex/Core.cpp
     ${VORTEX_DIR}/src/Vortex/Logging.cpp
+    ${VORTEX_DIR}/src/Vortex/Application.cpp
 )
 target_include_directories(vortex PUBLIC
     ${VORTEX_DIR}/include

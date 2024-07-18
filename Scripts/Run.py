@@ -11,6 +11,10 @@ def build(cmd_args: [str]) -> int:
         print("Compile Commands: on")
         cmake_args.append("-DCMAKE_EXPORT_COMPILE_COMMANDS=ON")
 
+    if "debug=on" in cmd_args:
+        print("Debug Symbold: on")
+        cmake_args.append("-DCMAKE_BUILD_TYPE=Debug")
+
     result: int = subprocess.run(cmake_args).returncode
     result = subprocess.run(["cmake", "--build", "build/"]).returncode
 
