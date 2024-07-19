@@ -11,6 +11,7 @@ public:
     }
 
     void Run() {
+        VT_INFO("App is running!");
     }
 };
 

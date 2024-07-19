@@ -1,24 +1,32 @@
 #pragma once
 
-#ifdef VT_LINUXBSD
+#ifdef VT_ENABLE_ASSERTS
 
-    #include <signal.h>
+    #ifdef VT_LINUXBSD
 
-    #define VT_ASSERT(x, ...)                                                                                          \
-        {                                                                                                              \
-            if (!x) {                                                                                                  \
-                VT_ERROR("Assertion failed: {0}", __VA_ARGS__);                                                        \
-                raise(SIGTRAP);                                                                                        \
-            }                                                                                                          \
-        }
+        #include <signal.h>
 
-    #define VT_CORE_ASSERT(x, ...)                                                                                     \
-        {                                                                                                              \
-            if (!x) {                                                                                                  \
-                VT_CORE_ERROR("Assertion failed: {0}", __VA_ARGS__);                                                   \
-                raise(SIGTRAP);                                                                                        \
-            }                                                                                                          \
-        }
+        #define VT_ASSERT(x, ...)                                                                                      \
+            {                                                                                                          \
+                if (!x) {                                                                                              \
+                    VT_ERROR("Assertion failed: {0}", __VA_ARGS__);                                                    \
+                    raise(SIGTRAP);                                                                                    \
+                }                                                                                                      \
+            }
+
+        #define VT_CORE_ASSERT(x, ...)                                                                                 \
+            {                                                                                                          \
+                if (!x) {                                                                                              \
+                    VT_CORE_ERROR("Assertion failed: {0}", __VA_ARGS__);                                               \
+                    raise(SIGTRAP);                                                                                    \
+                }                                                                                                      \
+            }
+    #else
+
+        #define VT_ASSERT(x, ...)
+        #define VT_CORE_ASSERT(x, ...)
+
+    #endif
 
 #endif
 

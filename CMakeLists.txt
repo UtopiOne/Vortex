@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.19)
 project(VortexEngine 
     VERSION 0.1
     DESCRIPTION "Vortex: game engine for 2D games"
-    LANGUAGES CXX
+    LANGUAGES CXX C
 )
 
 set(CMAKE_CXX_STANDARD 20)

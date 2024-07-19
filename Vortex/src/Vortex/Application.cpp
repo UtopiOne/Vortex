@@ -5,8 +5,8 @@
 #include "Vortex/Logging.h"
 #include "Vortex/Window.h"
 
+#include <glad/glad.h>
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_events.h>
 
 namespace Vortex {
 
@@ -19,7 +19,7 @@ Application::Application() {
         VT_CORE_ERROR("Failed to initialize SDL: {0}", SDL_GetError());
     }
 
-    m_Window = std::make_unique<Window>("Vortex Applicaiont", 800, 600);
+    m_Window = std::make_unique<Window>("Vortex Application", 800, 600);
 }
 
 Application::~Application() {
@@ -34,6 +34,10 @@ void Application::Run() {
                 m_ShouldQuit = true;
             }
         }
+
+        glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(1.0f, 0.1f, 0.1f, 1.0f);
+        m_Window->OnUpdate();
     }
 }
 

@@ -2,6 +2,7 @@
 
 #include "Vortex/Core.h"
 
+#include <SDL2/SDL_video.h>
 #include <memory>
 #include <string>
 
@@ -13,6 +14,8 @@ class Window {
 public:
     Window(const std::string title, const uint32 width, const uint32 height);
     ~Window();
+
+    void OnUpdate();
 
     inline const std::string GetTitle() const {
         return m_Title;
@@ -26,6 +29,7 @@ public:
 
 private:
     SDL_Window* m_WindowHandle;
+    SDL_GLContext m_RenderingContext;
     std::string m_Title;
 
     uint32 m_Width, m_Height;
