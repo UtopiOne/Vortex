@@ -19,11 +19,23 @@ endif()
 
 find_package(spdlog REQUIRED)
 
+if (LINUX OR BSD)
+    add_compile_definitions(VT_LINUXBSD)
+endif(LINUX OR BSD)
+
 set(VORTEX_DIR ${PROJECT_SOURCE_DIR}/Vortex)
 add_library(vortex STATIC)
 target_sources(vortex PRIVATE 
-    ${VORTEX_DIR}/src/Vortex/Logging.cpp
+    ${VORTEX_DIR}/include/Vortex.h
+    ${VORTEX_DIR}/include/VortexPCH.h
+
+    ${VORTEX_DIR}/include/Vortex/Core.h
+
+    ${VORTEX_DIR}/include/Vortex/Application.h
     ${VORTEX_DIR}/src/Vortex/Application.cpp
+
+    ${VORTEX_DIR}/src/Vortex/Logging.cpp
+    ${VORTEX_DIR}/include/Vortex/Logging.h
 )
 target_include_directories(vortex PUBLIC
     ${VORTEX_DIR}/include

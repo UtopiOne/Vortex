@@ -5,7 +5,7 @@ namespace Vortex {
 class Application {
 public:
     Application();
-    ~Application();
+    virtual ~Application();
 
     void Run();
 
@@ -16,5 +16,7 @@ public:
 private:
     static Application* s_Instance;
 };
+
+Application* CreateApplication();
 
 } // namespace Vortex

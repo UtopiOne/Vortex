@@ -2,21 +2,18 @@
 
 #include "VortexPCH.h"
 
+#include <thread>
+
 namespace Vortex {
 
 Application::Application() {
-    Logger::Init();
-
-    VT_CORE_INFO("Welcome to Lumina!");
-
-    Run();
 }
 
 Application::~Application() {
-    VT_CORE_INFO("Goodbye!");
 }
 
 void Application::Run() {
+    std::this_thread::sleep_for(std::chrono::milliseconds(5000));
 }
 
 } // namespace Vortex
