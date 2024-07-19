@@ -1,5 +1,9 @@
 #pragma once
 
+#include "Vortex/Window.h"
+
+#include <memory>
+
 namespace Vortex {
 
 class Application {
@@ -15,6 +19,10 @@ public:
 
 private:
     static Application* s_Instance;
+
+    std::unique_ptr<Window> m_Window;
+
+    bool m_ShouldQuit = false;
 };
 
 Application* CreateApplication();

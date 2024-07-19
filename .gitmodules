@@ -1,3 +1,6 @@
 [submodule "Vortex/thirdparty/spdlog"]
 	path = Vortex/thirdparty/spdlog
 	url = https://github.com/gabime/spdlog/
+[submodule "Vortex/thirdparty/SDL"]
+	path = Vortex/thirdparty/SDL
+	url = https://github.com/libsdl-org/SDL

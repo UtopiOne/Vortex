@@ -18,6 +18,7 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/Vortex/thirdparty/spdlog/CMakeLists.txt")
 endif()
 
 find_package(spdlog REQUIRED)
+add_subdirectory(thirdparty/SDL)
 
 if (LINUX OR BSD)
     add_compile_definitions(VT_LINUXBSD)
@@ -36,9 +37,12 @@ target_sources(vortex PRIVATE
 
     ${VORTEX_DIR}/src/Vortex/Logging.cpp
     ${VORTEX_DIR}/include/Vortex/Logging.h
+
+    ${VORTEX_DIR}/src/Vortex/Window.cpp
+    ${VORTEX_DIR}/include/Vortex/Window.h
 )
 target_include_directories(vortex PUBLIC
     ${VORTEX_DIR}/include
 )
-target_link_libraries(vortex PRIVATE spdlog::spdlog)
+target_link_libraries(vortex PRIVATE spdlog::spdlog SDL2)
 target_precompile_headers(vortex PUBLIC ${VORTEX_DIR}/include/VortexPCH.h)
