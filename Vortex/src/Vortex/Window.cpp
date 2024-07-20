@@ -8,6 +8,8 @@
 #include "Vortex/Window.h"
 #include "Vortex/Logging.h"
 #include "Vortex/Core.h"
+#include "Vortex/Events/Event.h"
+#include "Vortex/Events/ApplicationEvent.h"
 
 namespace Vortex {
 
@@ -46,6 +48,25 @@ Window::~Window() {
 }
 
 void Window::OnUpdate() {
+    SDL_Event event;
+    while (SDL_PollEvent(&event) != 0) {
+        if (event.type == SDL_QUIT) {
+            WindowCloseEvent event;
+            m_CallbackFunction(event);
+        }
+
+        if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+            int w, h;
+            SDL_GetWindowSize(m_WindowHandle, &w, &h);
+
+            WindowResizeEvent event(w, h);
+            m_CallbackFunction(event);
+
+            m_Width = w;
+            m_Height = h;
+        }
+    }
+
     SDL_GL_SwapWindow(m_WindowHandle);
 }
 
