@@ -6,17 +6,46 @@ public:
     }
 
     void OnAttach() override {
-        VT_INFO("{0}::OnAttach", GetName());
+        VT_INFO("Hello from GameLayer!");
     }
     void OnDetach() override {
-        VT_INFO("{0}::OnDetach", GetName());
     }
     void OnUpdate() override {
-        VT_INFO("{0}::OnUpdate", GetName());
     }
+
     void OnEvent(Vortex::Event& event) override {
-        VT_INFO("{0}", event.ToString());
+        if (Vortex::Input::IsKeyPressed(Vortex::KeyboardKeycode::W) ||
+            Vortex::Input::IsKeyPressed(Vortex::KeyboardKeycode::Up)) {
+            VT_INFO("Move Up!");
+        }
+        if (Vortex::Input::IsKeyPressed(Vortex::KeyboardKeycode::S) ||
+            Vortex::Input::IsKeyPressed(Vortex::KeyboardKeycode::Down)) {
+            VT_INFO("Move Down!");
+        }
+        if (Vortex::Input::IsKeyPressed(Vortex::KeyboardKeycode::A) ||
+            Vortex::Input::IsKeyPressed(Vortex::KeyboardKeycode::Left)) {
+            VT_INFO("Move Left!");
+        }
+        if (Vortex::Input::IsKeyPressed(Vortex::KeyboardKeycode::D) ||
+            Vortex::Input::IsKeyPressed(Vortex::KeyboardKeycode::Right)) {
+            VT_INFO("Move Right!");
+        }
+
+        if (Vortex::Input::IsMouseButtonPressed(Vortex::MouseButtonCode::LeftMouseButton) && !m_JustShot) {
+            m_Shots++;
+            VT_INFO("You shot {0} times", m_Shots);
+
+            m_JustShot = true;
+        }
+        if (Vortex::Input::IsMouseButtonReleased(Vortex::MouseButtonCode::LeftMouseButton)) {
+            m_JustShot = false;
+        }
     }
+
+private:
+    unsigned int m_Shots = 0;
+
+    bool m_JustShot = false;
 };
 
 class ExampleApplication : public Vortex::Application {

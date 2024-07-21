@@ -11,4 +11,7 @@
 
 #include "Vortex/Layer.h"
 
+#include "Vortex/Input/Input.h"
+#include "Vortex/Input/Keycodes.h"
+
 #include "Vortex/EntryPoint.h"

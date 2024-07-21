@@ -47,6 +47,10 @@ target_sources(vortex PRIVATE
 
     ${VORTEX_DIR}/src/Vortex/Layer.cpp
     ${VORTEX_DIR}/include/Vortex/Layer.h
+
+    ${VORTEX_DIR}/src/Vortex/Input/Input.cpp
+    ${VORTEX_DIR}/include/Vortex/Input/Input.h
+    ${VORTEX_DIR}/include/Vortex/Input/Keycodes.h
 )
 target_include_directories(vortex PUBLIC
     ${VORTEX_DIR}/include

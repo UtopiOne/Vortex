@@ -1,5 +1,7 @@
 #include "Vortex/Application.h"
 
+#include "Vortex/Events/MouseEvent.h"
+#include "Vortex/Input/Input.h"
 #include "VortexPCH.h"
 
 #include "Vortex/Core.h"
