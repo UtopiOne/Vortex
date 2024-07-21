@@ -18,6 +18,9 @@ enum class EventType {
     MouseButtonPressed,
     MouseButtonReleased,
     MouseScrolled,
+
+    KeyboardKeyPressed,
+    KeyboardKeyReleased,
 };
 
 enum EventCategory {
@@ -25,6 +28,7 @@ enum EventCategory {
     EventCategoryApplication = BIT(0),
     EventCategoryInput = BIT(1),
     EventCategoryMouse = BIT(2),
+    EventCategoryKeyboard = BIT(3),
 };
 
 #define EVENT_CLASS_TYPE(type)                                                                                         \

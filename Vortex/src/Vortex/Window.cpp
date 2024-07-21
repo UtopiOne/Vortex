@@ -1,3 +1,4 @@
+#include "Vortex/Events/KeyboardEvent.h"
 #include "Vortex/Events/MouseEvent.h"
 #include "VortexPCH.h"
 
@@ -116,6 +117,16 @@ void Window::HandleEvents(SDL_Event& event) {
             MouseScrolledEvent e(event.wheel.x, event.wheel.y);
             m_CallbackFunction(e);
         } break;
+
+        case SDL_KEYDOWN: {
+            KeyboardKeyPressedEvent e(event.key.keysym.scancode);
+            m_CallbackFunction(e);
+        } break;
+
+        case SDL_KEYUP: {
+            KeyboardKeyReleasedEvent e(event.key.keysym.scancode);
+            m_CallbackFunction(e);
+        }
         }
     }
 }
