@@ -31,10 +31,15 @@ Application::~Application() {
 }
 
 void Application::OnEvent(Event& event) {
-    VT_CORE_INFO("{0}", event.ToString());
-
     EventDispatcher dispatcher(event);
     dispatcher.Dispatch<WindowCloseEvent>(VT_BIND_EVENT_FN(Application::OnWindowClose));
+
+    for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
+        (*--it)->OnEvent(event);
+        if (event.WasHandled()) {
+            break;
+        }
+    }
 }
 
 void Application::Run() {
@@ -43,8 +48,23 @@ void Application::Run() {
     while (!m_ShouldQuit) {
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+
+        for (Layer* layer : m_LayerStack) {
+            layer->OnUpdate();
+        }
+
         m_Window->OnUpdate();
     }
+}
+
+void Application::PushLayer(Layer* layer) {
+    m_LayerStack.PushLayer(layer);
+    layer->OnAttach();
+}
+
+void Application::PushOverlay(Layer* overlay) {
+    m_LayerStack.PushOverlay(overlay);
+    overlay->OnAttach();
 }
 
 bool Application::OnWindowClose(WindowCloseEvent& e) {

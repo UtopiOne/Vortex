@@ -19,6 +19,8 @@ void Logger::Init() {
 
     s_CoreLogger->set_level(spdlog::level::trace);
     s_ApplicationLogger->set_level(spdlog::level::trace);
+
+    spdlog::flush_on(spdlog::level::trace);
 }
 
 } // namespace Vortex

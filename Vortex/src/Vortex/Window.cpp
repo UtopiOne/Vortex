@@ -1,13 +1,11 @@
-#include "Vortex/Events/KeyboardEvent.h"
-#include "Vortex/Events/MouseEvent.h"
+
 #include "VortexPCH.h"
 
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_mouse.h>
+#include "Vortex/Events/KeyboardEvent.h"
+#include "Vortex/Events/MouseEvent.h"
+
 #include <glad/glad.h>
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_error.h>
-#include <SDL2/SDL_video.h>
 
 #include "Vortex/Window.h"
 #include "Vortex/Logging.h"

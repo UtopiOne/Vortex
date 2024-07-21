@@ -1,17 +1,31 @@
-#include "Vortex.h"
+#include <Vortex.h>
+
+class GameLayer : public Vortex::Layer {
+public:
+    GameLayer() : Vortex::Layer("GameLayer") {
+    }
+
+    void OnAttach() override {
+        VT_INFO("{0}::OnAttach", GetName());
+    }
+    void OnDetach() override {
+        VT_INFO("{0}::OnDetach", GetName());
+    }
+    void OnUpdate() override {
+        VT_INFO("{0}::OnUpdate", GetName());
+    }
+    void OnEvent(Vortex::Event& event) override {
+        VT_INFO("{0}", event.ToString());
+    }
+};
 
 class ExampleApplication : public Vortex::Application {
 public:
     ExampleApplication() {
-        VT_INFO("Welcome to Example Application");
+        PushLayer(new GameLayer());
     }
 
     ~ExampleApplication() {
-        VT_INFO("Goodbye from Example Application");
-    }
-
-    void Run() {
-        VT_INFO("App is running!");
     }
 };
 

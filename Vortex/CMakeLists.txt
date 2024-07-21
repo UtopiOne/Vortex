@@ -31,6 +31,11 @@ target_sources(vortex PRIVATE
 
     ${VORTEX_DIR}/include/Vortex/Core.h
 
+    ${VORTEX_DIR}/include/Vortex/Events/Event.h
+    ${VORTEX_DIR}/include/Vortex/Events/ApplicationEvent.h
+    ${VORTEX_DIR}/include/Vortex/Events/KeyboardEvent.h
+    ${VORTEX_DIR}/include/Vortex/Events/MouseEvent.h
+
     ${VORTEX_DIR}/include/Vortex/Application.h
     ${VORTEX_DIR}/src/Vortex/Application.cpp
 
@@ -39,6 +44,9 @@ target_sources(vortex PRIVATE
 
     ${VORTEX_DIR}/src/Vortex/Window.cpp
     ${VORTEX_DIR}/include/Vortex/Window.h
+
+    ${VORTEX_DIR}/src/Vortex/Layer.cpp
+    ${VORTEX_DIR}/include/Vortex/Layer.h
 )
 target_include_directories(vortex PUBLIC
     ${VORTEX_DIR}/include

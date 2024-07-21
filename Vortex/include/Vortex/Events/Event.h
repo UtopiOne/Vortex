@@ -62,6 +62,10 @@ public:
         return GetCategoryFlags() & category;
     }
 
+    inline bool WasHandled() {
+        return m_Handled;
+    }
+
 protected:
     bool m_Handled = false;
 };
