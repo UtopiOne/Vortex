@@ -42,6 +42,10 @@ public:
         return ss.str();
     }
 
+    inline const int GetButton() const {
+        return m_Button;
+    }
+
     EVENT_CLASS_TYPE(MouseButtonPressed)
     EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
 
@@ -60,6 +64,10 @@ public:
         return ss.str();
     }
 
+    inline const int GetButton() const {
+        return m_Button;
+    }
+
     EVENT_CLASS_TYPE(MouseButtonReleased)
     EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
 
@@ -76,6 +84,13 @@ public:
         std::stringstream ss;
         ss << "MouseScrolled: " << m_XOffset << ", " << m_YOffset;
         return ss.str();
+    }
+
+    inline const int GetXOffset() const {
+        return m_XOffset;
+    }
+    inline const int GetYOffset() const {
+        return m_YOffset;
     }
 
     EVENT_CLASS_TYPE(MouseScrolled)

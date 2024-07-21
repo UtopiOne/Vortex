@@ -4,6 +4,7 @@
 #include "Vortex/Events/KeyboardEvent.h"
 #include "Vortex/Events/MouseEvent.h"
 
+#include <SDL2/SDL_video.h>
 #include <glad/glad.h>
 #include <SDL2/SDL.h>
 
