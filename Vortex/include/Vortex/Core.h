@@ -33,3 +33,7 @@
 #define uint8  uint8_t
 #define uint16 uint16_t
 #define uint32 uint32_t
+
+#define BIT(x) (1 << x)
+
+#define VT_BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
