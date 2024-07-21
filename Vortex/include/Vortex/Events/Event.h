@@ -9,14 +9,22 @@ namespace Vortex {
 
 enum class EventType {
     None = 0,
-    WindowClose,
-    WindowResize,
+    WindowClosed,
+    WindowResized,
+    WindowFocused,
+    WindowUnfocused,
+
+    MouseMoved,
+    MouseButtonPressed,
+    MouseButtonReleased,
+    MouseScrolled,
 };
 
 enum EventCategory {
     None = 0,
     EventCategoryApplication = BIT(0),
     EventCategoryInput = BIT(1),
+    EventCategoryMouse = BIT(2),
 };
 
 #define EVENT_CLASS_TYPE(type)                                                                                         \

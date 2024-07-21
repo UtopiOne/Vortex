@@ -20,11 +20,11 @@ public:
 
     std::string ToString() const override {
         std::stringstream ss;
-        ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
+        ss << "WindowResized: " << m_Width << ", " << m_Height;
         return ss.str();
     }
 
-    EVENT_CLASS_TYPE(WindowResize)
+    EVENT_CLASS_TYPE(WindowResized)
     EVENT_CLASS_CATEGORY(EventCategoryApplication)
 private:
     unsigned int m_Width, m_Height;
@@ -35,7 +35,25 @@ public:
     WindowCloseEvent() {
     }
 
-    EVENT_CLASS_TYPE(WindowClose)
+    EVENT_CLASS_TYPE(WindowClosed)
+    EVENT_CLASS_CATEGORY(EventCategoryApplication)
+};
+
+class WindowFocusedEvent : public Event {
+public:
+    WindowFocusedEvent() {
+    }
+
+    EVENT_CLASS_TYPE(WindowFocused)
+    EVENT_CLASS_CATEGORY(EventCategoryApplication)
+};
+
+class WindowUnfocusedEvent : public Event {
+public:
+    WindowUnfocusedEvent() {
+    }
+
+    EVENT_CLASS_TYPE(WindowUnfocused)
     EVENT_CLASS_CATEGORY(EventCategoryApplication)
 };
 

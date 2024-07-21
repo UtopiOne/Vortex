@@ -21,7 +21,6 @@ public:
 
     void OnUpdate();
 
-
     inline const std::string GetTitle() const {
         return m_Title;
     }
@@ -47,6 +46,8 @@ private:
     EventCallbackFn m_CallbackFunction;
 
     uint32 m_Width, m_Height;
+
+    void HandleEvents(SDL_Event& event);
 };
 
 } // namespace Vortex

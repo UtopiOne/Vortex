@@ -1,5 +1,8 @@
+#include "Vortex/Events/MouseEvent.h"
 #include "VortexPCH.h"
 
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_mouse.h>
 #include <glad/glad.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_error.h>
@@ -49,25 +52,72 @@ Window::~Window() {
 
 void Window::OnUpdate() {
     SDL_Event event;
-    while (SDL_PollEvent(&event) != 0) {
-        if (event.type == SDL_QUIT) {
-            WindowCloseEvent event;
-            m_CallbackFunction(event);
-        }
-
-        if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-            int w, h;
-            SDL_GetWindowSize(m_WindowHandle, &w, &h);
-
-            WindowResizeEvent event(w, h);
-            m_CallbackFunction(event);
-
-            m_Width = w;
-            m_Height = h;
-        }
-    }
+    HandleEvents(event);
 
     SDL_GL_SwapWindow(m_WindowHandle);
+}
+
+void Window::HandleEvents(SDL_Event& event) {
+    while (SDL_PollEvent(&event) != 0) {
+        switch (event.type) {
+
+        case SDL_QUIT: {
+            WindowCloseEvent event;
+            m_CallbackFunction(event);
+        } break;
+
+        case SDL_WINDOWEVENT: {
+
+            switch (event.window.event) {
+
+            case SDL_WINDOWEVENT_RESIZED: {
+                int w, h;
+                SDL_GetWindowSize(m_WindowHandle, &w, &h);
+
+                WindowResizeEvent event(w, h);
+                m_CallbackFunction(event);
+
+                m_Width = w;
+                m_Height = h;
+            } break;
+
+            case SDL_WINDOWEVENT_LEAVE: {
+                WindowUnfocusedEvent event;
+                m_CallbackFunction(event);
+            } break;
+
+            case SDL_WINDOWEVENT_ENTER: {
+                WindowFocusedEvent event;
+                m_CallbackFunction(event);
+            } break;
+            }
+
+        } break;
+
+        case SDL_MOUSEMOTION: {
+            int x, y;
+            SDL_GetMouseState(&x, &y);
+
+            MouseMovedEvent event(x, y);
+            m_CallbackFunction(event);
+        } break;
+
+        case SDL_MOUSEBUTTONDOWN: {
+            MouseButtonPressedEvent e(event.button.button);
+            m_CallbackFunction(e);
+        } break;
+
+        case SDL_MOUSEBUTTONUP: {
+            MouseButtonReleasedEvent e(event.button.button);
+            m_CallbackFunction(e);
+        } break;
+
+        case SDL_MOUSEWHEEL: {
+            MouseScrolledEvent e(event.wheel.x, event.wheel.y);
+            m_CallbackFunction(e);
+        } break;
+        }
+    }
 }
 
 } // namespace Vortex

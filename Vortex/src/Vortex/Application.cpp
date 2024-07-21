@@ -1,15 +1,13 @@
 #include "Vortex/Application.h"
 
+#include "VortexPCH.h"
+
 #include "Vortex/Core.h"
 #include "Vortex/Events/ApplicationEvent.h"
 #include "Vortex/Events/Event.h"
-#include "VortexPCH.h"
-
 #include "Vortex/Logging.h"
 #include "Vortex/Window.h"
 
-#include <SDL2/SDL_video.h>
-#include <functional>
 #include <glad/glad.h>
 #include <SDL2/SDL.h>
 
@@ -37,10 +35,6 @@ void Application::OnEvent(Event& event) {
 
     EventDispatcher dispatcher(event);
     dispatcher.Dispatch<WindowCloseEvent>(VT_BIND_EVENT_FN(Application::OnWindowClose));
-
-    if (event.ToString() == "WindowClose") {
-        m_ShouldQuit = true;
-    }
 }
 
 void Application::Run() {
@@ -48,8 +42,7 @@ void Application::Run() {
 
     while (!m_ShouldQuit) {
         glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(1.0f, 0.1f, 0.1f, 1.0f);
-
+        glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
         m_Window->OnUpdate();
     }
 }
