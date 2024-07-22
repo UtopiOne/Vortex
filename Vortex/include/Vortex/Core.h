@@ -1,26 +1,27 @@
 #pragma once
 
-#ifdef VT_ENABLE_ASSERTS
+#ifdef VT_LINUXBSD
 
-    #ifdef VT_LINUXBSD
+    #include <signal.h>
 
-        #include <signal.h>
+    #ifdef VT_ENABLE_ASSERTS
 
         #define VT_ASSERT(x, ...)                                                                                      \
             {                                                                                                          \
-                if (!x) {                                                                                              \
-                    VT_ERROR("Assertion failed: {0}", __VA_ARGS__);                                                    \
+                if (!(x)) {                                                                                            \
+                    VT_ERROR("{0}:{1} - Assertion failed: {2}", __FILE__, __LINE__, __VA_ARGS__);                      \
                     raise(SIGTRAP);                                                                                    \
                 }                                                                                                      \
             }
 
         #define VT_CORE_ASSERT(x, ...)                                                                                 \
             {                                                                                                          \
-                if (!x) {                                                                                              \
-                    VT_CORE_ERROR("Assertion failed: {0}", __VA_ARGS__);                                               \
+                if (!(x)) {                                                                                            \
+                    VT_CORE_ERROR("{0}:{1} - Assertion failed: {2}", __FILE__, __LINE__, __VA_ARGS__);                 \
                     raise(SIGTRAP);                                                                                    \
                 }                                                                                                      \
             }
+
     #else
 
         #define VT_ASSERT(x, ...)
@@ -28,7 +29,25 @@
 
     #endif
 
+#else
+
+    #define VT_ASSERT(x, ...)
+    #define VT_CORE_ASSERT(x, ...)
+
 #endif
+
+#ifdef VT_WINDOWS
+
+    #error "Vortex only supports Linux for now"
+
+#endif
+
+#ifdef VT_MACOS
+
+    #error "Vortex only supports Linux for now"
+
+#endif
+
 
 #define uint8  uint8_t
 #define uint16 uint16_t

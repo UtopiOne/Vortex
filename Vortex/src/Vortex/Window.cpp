@@ -36,6 +36,7 @@ Window::Window(const std::string title, const uint32 width, const uint32 height)
                                       (SDL_WindowFlags)(SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL));
 
     VT_CORE_ASSERT(m_WindowHandle, "Failed to initialize SDL window: {0}", SDL_GetError());
+    VT_CORE_INFO("Window created: {0} ({1}, {2})", GetTitle(), GetWidth(), GetHeight());
 
     m_RenderingContext = SDL_GL_CreateContext(m_WindowHandle);
     SDL_GL_MakeCurrent(m_WindowHandle, m_RenderingContext);
@@ -43,6 +44,11 @@ Window::Window(const std::string title, const uint32 width, const uint32 height)
     VT_CORE_ASSERT(gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress),
                    "Failed to initialize OpenGL context: {0}",
                    SDL_GetError());
+
+    VT_CORE_INFO("Created Rendering Context: OpenGL");
+    VT_CORE_INFO("Vendor:     {0}", (const char*)glGetString(GL_VENDOR));
+    VT_CORE_INFO("Renderer:   {0}", (const char*)glGetString(GL_RENDERER))
+    VT_CORE_INFO("Version:    {0}", (const char*)glGetString(GL_VERSION));
 }
 
 Window::~Window() {
