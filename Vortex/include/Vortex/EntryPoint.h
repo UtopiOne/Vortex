@@ -9,7 +9,7 @@ extern Vortex::Application* Vortex::CreateApplication();
 
 int main() {
     Vortex::Logger::Init();
-    VT_CORE_INFO("Welcome to Lumina!");
+    VT_CORE_INFO("Welcome to Vortex!");
 
     Vortex::Application* app = Vortex::CreateApplication();
     app->Run();

@@ -24,10 +24,10 @@ public:
     inline const std::string GetTitle() const {
         return m_Title;
     }
-    inline const uint8 GetWidth() const {
+    inline const uint32 GetWidth() const {
         return m_Width;
     }
-    inline const uint8 GetHeight() const {
+    inline const uint32 GetHeight() const {
         return m_Height;
     }
     inline const SDL_Window* GetWindowHandle() const {
