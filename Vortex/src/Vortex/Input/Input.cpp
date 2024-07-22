@@ -6,6 +6,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL_mouse.h>
 
 namespace Vortex {
 
@@ -29,6 +30,13 @@ bool Input::IsMouseButtonReleased(MouseButtonCode button) {
     uint32 currentMouseState = SDL_GetMouseState(nullptr, nullptr);
 
     return !(currentMouseState & SDL_BUTTON((int)button));
+}
+
+std::pair<int, int> Input::GetMousePosition() {
+    int x, y;
+    uint32 currentMouseState = SDL_GetMouseState(&x, &y);
+
+    return {x, y};
 }
 
 } // namespace Vortex
