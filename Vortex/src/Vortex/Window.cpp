@@ -56,7 +56,7 @@ Window::~Window() {
     SDL_Quit();
 }
 
-void Window::OnUpdate() {
+void Window::OnUpdate(double deltaTime) {
     SDL_Event event;
     HandleEvents(event);
 

@@ -4,6 +4,7 @@
 #include "Vortex/Layer.h"
 #include "Vortex/Window.h"
 
+#include <SDL2/SDL_stdinc.h>
 #include <memory>
 
 namespace Vortex {
@@ -33,6 +34,7 @@ private:
 
     std::unique_ptr<Window> m_Window;
     bool m_ShouldQuit = false;
+    Uint64 m_TicksCount = 0;
 
     LayerStack m_LayerStack;
 

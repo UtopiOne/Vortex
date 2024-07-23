@@ -15,7 +15,7 @@ public:
     }
     virtual void OnDetach() {
     }
-    virtual void OnUpdate() {
+    virtual void OnUpdate(double deltaTime) {
     }
     virtual void OnEvent(Event& event) {
     }

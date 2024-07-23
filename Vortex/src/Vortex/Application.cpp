@@ -9,6 +9,7 @@
 #include "Vortex/Events/Event.h"
 #include "Vortex/Logging.h"
 #include "Vortex/Window.h"
+#include "Vortex/Time.h"
 
 #include <glad/glad.h>
 #include <SDL2/SDL.h>
@@ -45,17 +46,18 @@ void Application::OnEvent(Event& event) {
 }
 
 void Application::Run() {
-    WindowResizeEvent e(1280, 720);
-
     while (!m_ShouldQuit) {
+        double deltaTime = (Time::GetTimeInMilliseconds() - m_TicksCount) / 1000.0;
+        m_TicksCount = Time::GetTimeInMilliseconds();
+
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 
         for (Layer* layer : m_LayerStack) {
-            layer->OnUpdate();
+            layer->OnUpdate(deltaTime);
         }
 
-        m_Window->OnUpdate();
+        m_Window->OnUpdate(deltaTime);
     }
 }
 

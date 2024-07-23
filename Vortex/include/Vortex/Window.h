@@ -19,7 +19,7 @@ public:
     Window(const std::string title, const uint32 width, const uint32 height);
     ~Window();
 
-    void OnUpdate();
+    void OnUpdate(double deltaTime);
 
     inline const std::string GetTitle() const {
         return m_Title;

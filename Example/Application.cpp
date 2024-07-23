@@ -10,6 +10,10 @@ public:
         VT_INFO("Hello from GameLayer!");
     }
 
+    void OnUpdate(double deltaTime) override {
+        VT_TRACE("Delta time: {0}", deltaTime);
+    }
+
     void OnEvent(Vortex::Event& event) override {
         if (event.IsInCategory(Vortex::EventCategoryKeyboard)) {
             if (Vortex::Input::IsKeyPressed(Vortex::KeyboardKeycode::W) ||

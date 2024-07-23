@@ -14,4 +14,6 @@
 #include "Vortex/Input/Input.h"
 #include "Vortex/Input/Keycodes.h"
 
+#include "Vortex/Time.h"
+
 #include "Vortex/EntryPoint.h"
