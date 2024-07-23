@@ -124,7 +124,7 @@ void Window::HandleEvents(SDL_Event& event) {
         } break;
 
         case SDL_KEYDOWN: {
-            KeyboardKeyPressedEvent e(event.key.keysym.scancode);
+            KeyboardKeyPressedEvent e(event.key.keysym.scancode, event.key.repeat);
             m_CallbackFunction(e);
         } break;
 
