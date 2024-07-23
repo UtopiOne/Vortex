@@ -8,13 +8,17 @@ namespace Vortex {
 
 class KeyboardKeyPressedEvent : public Event {
 public:
-    KeyboardKeyPressedEvent(int keycode) : m_Keycode(keycode) {
+    KeyboardKeyPressedEvent(int keycode, int repeats) : m_Keycode(keycode), m_Repeats(repeats) {
     }
 
     std::string ToString() const override {
         std::stringstream ss;
-        ss << "KeyboardKeyPressed: " << m_Keycode;
+        ss << "KeyboardKeyPressed: " << m_Keycode << " (" << m_Repeats << " repeats)";
         return ss.str();
+    }
+
+    inline const int GetRepeats() const {
+        return m_Repeats;
     }
 
     EVENT_CLASS_TYPE(KeyboardKeyPressed)
@@ -22,6 +26,7 @@ public:
 
 private:
     int m_Keycode;
+    int m_Repeats;
 };
 
 class KeyboardKeyReleasedEvent : public Event {
