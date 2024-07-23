@@ -41,9 +41,8 @@ Window::Window(const std::string title, const uint32 width, const uint32 height)
     m_RenderingContext = SDL_GL_CreateContext(m_WindowHandle);
     SDL_GL_MakeCurrent(m_WindowHandle, m_RenderingContext);
 
-    VT_CORE_ASSERT(gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress),
-                   "Failed to initialize OpenGL context: {0}",
-                   SDL_GetError());
+    int glLoaded = gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress);
+    VT_CORE_ASSERT(glLoaded, "Failed to initialize OpenGL context: {0}", SDL_GetError());
 
     VT_CORE_INFO("Created Rendering Context: OpenGL");
     VT_CORE_INFO("Vendor:     {0}", (const char*)glGetString(GL_VENDOR));

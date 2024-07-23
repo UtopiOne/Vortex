@@ -1,4 +1,3 @@
-#include "Vortex/Input/Input.h"
 #include <Vortex.h>
 
 class GameLayer : public Vortex::Layer {

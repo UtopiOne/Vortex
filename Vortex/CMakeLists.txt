@@ -36,13 +36,13 @@ target_sources(
 target_include_directories(vortex PUBLIC ${VORTEX_DIR}/include)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    target_compile_definitions(vortex PUBLIC VT_LINUXBSD)
-    message(STATUS "Compile target: Linux")
+  target_compile_definitions(vortex PUBLIC VT_LINUXBSD)
+  message(STATUS "Compile target: Linux")
 endif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
-# if(${CMAKE_BUILD_TYPE} MATCHES Release)
-target_compile_definitions(vortex PUBLIC VT_ENABLE_ASSERTS)
-# endif(${CMAKE_BUILD_TYPE} MATCHES Release)
+if(${CMAKE_BUILD_TYPE} MATCHES Debug)
+  target_compile_definitions(vortex PUBLIC VT_ENABLE_ASSERTS)
+endif(${CMAKE_BUILD_TYPE} MATCHES Debug)
 
 target_link_libraries(vortex PRIVATE glad spdlog::spdlog
                                      $<$<BOOL:${MINGW}>:ws2_32> SDL2)
