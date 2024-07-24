@@ -8,7 +8,7 @@ namespace Vortex {
 
 class Time {
 public:
-    static uint64 GetTimeInMilliseconds() {
+    static const uint64 GetTimeInMilliseconds() {
         return SDL_GetTicks64();
     }
 };

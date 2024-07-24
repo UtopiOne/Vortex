@@ -10,7 +10,6 @@ public:
     }
 
     void OnUpdate(double deltaTime) override {
-        VT_TRACE("Delta time: {0}", deltaTime);
     }
 
     void OnEvent(Vortex::Event& event) override {
