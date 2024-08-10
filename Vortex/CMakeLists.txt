@@ -26,6 +26,8 @@ target_sources(
           ${VORTEX_DIR}/src/Vortex/Application.cpp
           ${VORTEX_DIR}/src/Vortex/Logging.cpp
           ${VORTEX_DIR}/include/Vortex/Logging.h
+          ${VORTEX_DIR}/src/Vortex/Utils.cpp
+          ${VORTEX_DIR}/include/Vortex/Utils.h
           ${VORTEX_DIR}/src/Vortex/Window.cpp
           ${VORTEX_DIR}/include/Vortex/Window.h
           ${VORTEX_DIR}/src/Vortex/Layer.cpp

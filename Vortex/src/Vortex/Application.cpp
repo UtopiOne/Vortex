@@ -27,6 +27,31 @@ Application::Application() {
 
     m_Window = std::make_unique<Window>("Vortex Application", 800, 600);
     m_Window->SetEventCallback(VT_BIND_EVENT_FN(Application::OnEvent));
+
+    VT_CORE_INFO("Created Rendering Context: OpenGL");
+    VT_CORE_INFO("Vendor:     {0}", (const char*)glGetString(GL_VENDOR));
+    VT_CORE_INFO("Renderer:   {0}", (const char*)glGetString(GL_RENDERER))
+    VT_CORE_INFO("Version:    {0}", (const char*)glGetString(GL_VERSION));
+
+
+    glGenVertexArrays(1, &m_VertexArray);
+    glBindVertexArray(m_VertexArray);
+
+    glGenBuffers(1, &m_VertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+
+    float vertices[3 * 3] = {-0.5f, -0.5f, 0.0f, 0.5f, -0.5f, 0.0f, 0.0f, 0.5f, 0.0f};
+
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+
+    glGenBuffers(1, &m_IndexBuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+
+    unsigned int indices[3] = {0, 1, 2};
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 }
 
 Application::~Application() {
@@ -50,8 +75,11 @@ void Application::Run() {
         double deltaTime = (Time::GetTimeInMilliseconds() - m_TicksCount) / 1000.0;
         m_TicksCount = Time::GetTimeInMilliseconds();
 
-        glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        glBindVertexArray(m_VertexArray);
+        glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
 
         for (Layer* layer : m_LayerStack) {
             layer->OnUpdate(deltaTime);

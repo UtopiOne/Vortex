@@ -1,15 +1,16 @@
-
 #include "VortexPCH.h"
 
 #include "Vortex/Events/KeyboardEvent.h"
 #include "Vortex/Events/MouseEvent.h"
 
+#include <GLES/gl.h>
 #include <SDL2/SDL_video.h>
 #include <glad/glad.h>
 #include <SDL2/SDL.h>
 
 #include "Vortex/Window.h"
 #include "Vortex/Logging.h"
+#include "Vortex/Utils.h"
 #include "Vortex/Core.h"
 #include "Vortex/Events/Event.h"
 #include "Vortex/Events/ApplicationEvent.h"
@@ -39,20 +40,21 @@ Window::Window(const std::string title, const uint32 width, const uint32 height)
     VT_CORE_INFO("Window created: {0} ({1}, {2})", GetTitle(), GetWidth(), GetHeight());
 
     m_RenderingContext = SDL_GL_CreateContext(m_WindowHandle);
+    VT_CORE_ASSERT(m_RenderingContext, "Failed to create rendering context: {0}", SDL_GetError());
     SDL_GL_MakeCurrent(m_WindowHandle, m_RenderingContext);
 
     int glLoaded = gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress);
     VT_CORE_ASSERT(glLoaded, "Failed to initialize OpenGL context: {0}", SDL_GetError());
 
-    VT_CORE_INFO("Created Rendering Context: OpenGL");
-    VT_CORE_INFO("Vendor:     {0}", (const char*)glGetString(GL_VENDOR));
-    VT_CORE_INFO("Renderer:   {0}", (const char*)glGetString(GL_RENDERER))
-    VT_CORE_INFO("Version:    {0}", (const char*)glGetString(GL_VERSION));
+    glEnable(GL_BLEND);
+    glEnable(GL_DEBUG_OUTPUT);
+    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+    glDebugMessageCallback(GLDebugMessageCallback, nullptr);
 }
 
 Window::~Window() {
+    SDL_GL_DeleteContext(m_RenderingContext);
     SDL_DestroyWindow(m_WindowHandle);
-    SDL_Quit();
 }
 
 void Window::OnUpdate(double deltaTime) {

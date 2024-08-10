@@ -26,10 +26,10 @@ private:
 
 #define VT_CORE_INFO(...)    Vortex::Logger::GetCoreLogger()->info(__VA_ARGS__);
 #define VT_CORE_TRACE(...)   Vortex::Logger::GetCoreLogger()->trace(__VA_ARGS__);
-#define VT_CORE_WARNING(...) Vortex::Logger::GetCoreLogger()->warning(__VA_ARGS__);
+#define VT_CORE_WARNING(...) Vortex::Logger::GetCoreLogger()->warn(__VA_ARGS__);
 #define VT_CORE_ERROR(...)   Vortex::Logger::GetCoreLogger()->critical(__VA_ARGS__);
 
 #define VT_INFO(...)    Vortex::Logger::GetApplicationLogger()->info(__VA_ARGS__);
 #define VT_TRACE(...)   Vortex::Logger::GetApplicationLogger()->trace(__VA_ARGS__);
-#define VT_WARNING(...) Vortex::Logger::GetApplicationLogger()->warning(__VA_ARGS__);
+#define VT_WARNING(...) Vortex::Logger::GetApplicationLogger()->warn(__VA_ARGS__);
 #define VT_ERROR(...)   Vortex::Logger::GetApplicationLogger()->critical(__VA_ARGS__);

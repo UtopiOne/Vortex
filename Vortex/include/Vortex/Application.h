@@ -33,6 +33,8 @@ private:
     static Application* s_Instance;
 
     std::unique_ptr<Window> m_Window;
+    unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+
     bool m_ShouldQuit = false;
     Uint64 m_TicksCount = 0;
 
