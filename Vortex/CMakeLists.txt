@@ -1,7 +1,22 @@
 set(VORTEX_DIR ${PROJECT_SOURCE_DIR}/Vortex)
 
-find_package(spdlog REQUIRED)
-add_subdirectory(thirdparty/SDL)
+include(FetchContent)
+set(FETCHCONTENT_QUIET FALSE)
+
+FetchContent_Declare(
+  spdlog
+  GIT_REPOSITORY "https://github.com/gabime/spdlog"
+  GIT_TAG "v1.x"
+  GIT_PROGRESS TRUE)
+FetchContent_MakeAvailable(spdlog)
+
+FetchContent_Declare(
+  SDL2
+  GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
+  GIT_TAG release-2.26.3
+  GIT_SHALLOW TRUE
+  GIT_PROGRESS TRUE)
+FetchContent_MakeAvailable(SDL2)
 
 add_library(glad STATIC)
 target_sources(
@@ -46,6 +61,8 @@ if(${CMAKE_BUILD_TYPE} MATCHES Debug)
   target_compile_definitions(vortex PUBLIC VT_ENABLE_ASSERTS)
 endif(${CMAKE_BUILD_TYPE} MATCHES Debug)
 
-target_link_libraries(vortex PRIVATE glad spdlog::spdlog
-                                     $<$<BOOL:${MINGW}>:ws2_32> SDL2)
+target_link_libraries(
+  vortex
+  PRIVATE glad SDL2
+  PUBLIC spdlog $<$<BOOL:${MINGW}>:ws2_32>)
 target_precompile_headers(vortex PUBLIC ${VORTEX_DIR}/include/VortexPCH.h)
