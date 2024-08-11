@@ -45,7 +45,7 @@ if "__main__" == __name__:
 
     if result == 0:
         should_run: bool = True if input(
-            "Run program?: y/n ") == "y" else False
+            "Run program?: [y/n] ") == "y" else False
 
         if should_run:
             run()

@@ -63,8 +63,8 @@ target_sources(
           # Application
           ${VT_DIR}/include/Vortex/Application.h
           ${VT_DIR}/src/Vortex/Application.cpp
-          ${VT_DIR}/src/Vortex/Logging.cpp
           # Logging
+          ${VT_DIR}/src/Vortex/Logging.cpp
           ${VT_DIR}/include/Vortex/Logging.h
           # Utils
           ${VT_DIR}/src/Vortex/Utils.cpp

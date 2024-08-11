@@ -94,7 +94,7 @@ void APIENTRY GLDebugMessageCallback(GLenum source,
 
     case GL_DEBUG_SEVERITY_NOTIFICATION:
         _severity = "NOTIFICATION";
-        VT_CORE_INFO("OPENGL {0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
+        VT_CORE_TRACE("OPENGL {0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
         break;
 
     default:
