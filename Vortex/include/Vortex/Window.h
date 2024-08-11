@@ -1,5 +1,6 @@
 #pragma once
 
+#include "SDL_video.h"
 #include "Vortex/Core.h"
 #include "Vortex/Events/Event.h"
 
@@ -28,8 +29,12 @@ public:
     inline const uint32 GetHeight() const {
         return m_Height;
     }
-    inline const SDL_Window* GetWindowHandle() const {
+
+    inline SDL_Window* GetWindowHandle() const {
         return m_WindowHandle;
+    }
+    inline const SDL_GLContext GetRenderingContext() const {
+        return m_RenderingContext;
     }
 
     inline void SetEventCallback(const EventCallbackFn& callback) {

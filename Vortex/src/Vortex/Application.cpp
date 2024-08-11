@@ -1,3 +1,4 @@
+#include "Vortex/DebugUI/DebugUILayer.h"
 #include "VortexPCH.h"
 
 #include "Vortex/Application.h"
@@ -25,6 +26,9 @@ Application::Application() {
 
     m_Window = std::make_unique<Window>("Vortex Application", 800, 600);
     m_Window->SetEventCallback(VT_BIND_EVENT_FN(Application::OnEvent));
+
+    m_DebugUILayer = new DebugUILayer();
+    PushOverlay(m_DebugUILayer);
 
     VT_CORE_INFO("Created Rendering Context: OpenGL");
     VT_CORE_INFO("Vendor:     {0}", (const char*)glGetString(GL_VENDOR));
@@ -81,6 +85,12 @@ void Application::Run() {
         for (Layer* layer : m_LayerStack) {
             layer->OnUpdate(deltaTime);
         }
+
+        m_DebugUILayer->Begin();
+        for (Layer* layer : m_LayerStack) {
+            layer->OnDebugUIUpdate();
+        }
+        m_DebugUILayer->End();
 
         m_Window->OnUpdate(deltaTime);
     }

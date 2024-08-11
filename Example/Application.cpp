@@ -1,5 +1,7 @@
 #include <Vortex.h>
 
+#include <imgui.h>
+
 class GameLayer : public Vortex::Layer {
 public:
     GameLayer() : Vortex::Layer("GameLayer") {
@@ -10,6 +12,12 @@ public:
     }
 
     void OnUpdate(double deltaTime) override {
+    }
+
+    void OnDebugUIUpdate() override {
+        ImGui::Begin("test");
+        ImGui::Text("%i", m_Shots);
+        ImGui::End();
     }
 
     void OnEvent(Vortex::Event& event) override {

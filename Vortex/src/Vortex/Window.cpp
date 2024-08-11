@@ -8,6 +8,7 @@
 #include "Vortex/Utils.h"
 #include "Vortex/Core.h"
 #include "Vortex/Events/ApplicationEvent.h"
+#include "imgui_impl_sdl2.h"
 
 #include <glad/glad.h>
 #include <SDL.h>
@@ -63,6 +64,7 @@ void Window::OnUpdate(double deltaTime) {
 
 void Window::HandleEvents(SDL_Event& event) {
     while (SDL_PollEvent(&event) != 0) {
+        ImGui_ImplSDL2_ProcessEvent(&event);
         switch (event.type) {
 
         case SDL_QUIT: {

@@ -46,7 +46,7 @@ int Input::GetMouseX() {
 
 int Input::GetMouseY() {
     int y;
-    uint32 currentMouseX = SDL_GetMouseState(&y, nullptr);
+    uint32 currentMouseX = SDL_GetMouseState(nullptr, &y);
 
     return y;
 }

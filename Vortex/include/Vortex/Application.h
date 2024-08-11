@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Vortex/DebugUI/DebugUILayer.h"
 #include "Vortex/Events/ApplicationEvent.h"
 #include "Vortex/Layer.h"
 #include "Vortex/Window.h"
@@ -39,6 +40,7 @@ private:
     Uint64 m_TicksCount = 0;
 
     LayerStack m_LayerStack;
+    DebugUILayer* m_DebugUILayer;
 
     bool OnWindowClose(WindowCloseEvent& e);
 };

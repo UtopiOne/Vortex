@@ -10,6 +10,7 @@
 #include "Vortex/Events/KeyboardEvent.h"
 
 #include "Vortex/Layer.h"
+#include "Vortex/DebugUI/DebugUILayer.h"
 
 #include "Vortex/Input/Input.h"
 #include "Vortex/Input/Keycodes.h"

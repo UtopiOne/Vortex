@@ -18,6 +18,8 @@ public:
     }
     virtual void OnUpdate(double deltaTime) {
     }
+    virtual void OnDebugUIUpdate() {
+    }
     virtual void OnEvent(Event& event) {
     }
 
