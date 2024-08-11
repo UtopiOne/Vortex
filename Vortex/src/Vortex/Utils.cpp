@@ -79,27 +79,27 @@ void APIENTRY GLDebugMessageCallback(GLenum source,
     switch (severity) {
     case GL_DEBUG_SEVERITY_HIGH:
         _severity = "HIGH";
-        VT_CORE_ERROR("{0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
+        VT_CORE_ERROR("OPENGL {0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
         break;
 
     case GL_DEBUG_SEVERITY_MEDIUM:
         _severity = "MEDIUM";
-        VT_CORE_WARNING("{0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
+        VT_CORE_WARNING("OPENGL {0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
         break;
 
     case GL_DEBUG_SEVERITY_LOW:
         _severity = "LOW";
-        VT_CORE_WARNING("{0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
+        VT_CORE_WARNING("OPENGL {0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
         break;
 
     case GL_DEBUG_SEVERITY_NOTIFICATION:
         _severity = "NOTIFICATION";
-        VT_CORE_INFO("{0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
+        VT_CORE_INFO("OPENGL {0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
         break;
 
     default:
         _severity = "UNKNOWN";
-        VT_CORE_INFO("{0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
+        VT_CORE_INFO("OPENGL {0} ({1}): {2} from {3} - {4}", id, _severity, _type, _source, msg);
         break;
     }
 }

@@ -23,7 +23,8 @@ def build(cmd_args: [str]) -> int:
 
     cmake_args.append(f"-B {cmake_files_dir}")
     result: int = subprocess.run(cmake_args).returncode
-    result = subprocess.run(["cmake", "--build", cmake_files_dir]).returncode
+    result = subprocess.run(
+        ["cmake", "--build", cmake_files_dir, "-j", "14"]).returncode
 
     return result
 

@@ -3,12 +3,11 @@
 #include "Vortex/Core.h"
 #include "Vortex/Events/Event.h"
 
-#include <SDL2/SDL_video.h>
 #include <functional>
 #include <memory>
 #include <string>
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 namespace Vortex {
 

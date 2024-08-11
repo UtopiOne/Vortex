@@ -4,7 +4,7 @@
 #include "Vortex/Layer.h"
 #include "Vortex/Window.h"
 
-#include <SDL2/SDL_stdinc.h>
+#include <SDL_stdinc.h>
 #include <memory>
 
 namespace Vortex {

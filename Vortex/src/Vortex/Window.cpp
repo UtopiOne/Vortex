@@ -3,17 +3,15 @@
 #include "Vortex/Events/KeyboardEvent.h"
 #include "Vortex/Events/MouseEvent.h"
 
-#include <GLES/gl.h>
-#include <SDL2/SDL_video.h>
-#include <glad/glad.h>
-#include <SDL2/SDL.h>
-
 #include "Vortex/Window.h"
 #include "Vortex/Logging.h"
 #include "Vortex/Utils.h"
 #include "Vortex/Core.h"
 #include "Vortex/Events/Event.h"
 #include "Vortex/Events/ApplicationEvent.h"
+
+#include <glad/glad.h>
+#include <SDL.h>
 
 namespace Vortex {
 

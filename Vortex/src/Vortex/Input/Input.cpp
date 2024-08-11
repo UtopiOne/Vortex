@@ -4,9 +4,7 @@
 
 #include "Vortex/Input/Input.h"
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_mouse.h>
+#include <SDL.h>
 
 namespace Vortex {
 
