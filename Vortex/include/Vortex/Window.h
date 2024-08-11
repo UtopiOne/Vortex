@@ -4,7 +4,6 @@
 #include "Vortex/Events/Event.h"
 
 #include <functional>
-#include <memory>
 #include <string>
 
 #include <SDL.h>

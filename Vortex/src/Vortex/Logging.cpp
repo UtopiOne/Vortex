@@ -1,6 +1,6 @@
-#include "Vortex/Logging.h"
-
 #include "VortexPCH.h"
+
+#include "Vortex/Logging.h"
 
 #include <spdlog/spdlog.h>
 #include <spdlog/common.h>

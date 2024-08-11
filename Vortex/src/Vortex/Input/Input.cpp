@@ -1,8 +1,8 @@
-#include "Vortex/Application.h"
-
 #include "VortexPCH.h"
 
 #include "Vortex/Input/Input.h"
+
+#include "Vortex/Application.h"
 
 #include <SDL.h>
 

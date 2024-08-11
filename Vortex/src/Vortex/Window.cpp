@@ -7,7 +7,6 @@
 #include "Vortex/Logging.h"
 #include "Vortex/Utils.h"
 #include "Vortex/Core.h"
-#include "Vortex/Events/Event.h"
 #include "Vortex/Events/ApplicationEvent.h"
 
 #include <glad/glad.h>

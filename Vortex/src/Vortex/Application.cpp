@@ -1,8 +1,6 @@
-#include "Vortex/Application.h"
-
-#include "Vortex/Events/MouseEvent.h"
-#include "Vortex/Input/Input.h"
 #include "VortexPCH.h"
+
+#include "Vortex/Application.h"
 
 #include "Vortex/Core.h"
 #include "Vortex/Events/ApplicationEvent.h"
@@ -32,7 +30,6 @@ Application::Application() {
     VT_CORE_INFO("Vendor:     {0}", (const char*)glGetString(GL_VENDOR));
     VT_CORE_INFO("Renderer:   {0}", (const char*)glGetString(GL_RENDERER))
     VT_CORE_INFO("Version:    {0}", (const char*)glGetString(GL_VERSION));
-
 
     glGenVertexArrays(1, &m_VertexArray);
     glBindVertexArray(m_VertexArray);
