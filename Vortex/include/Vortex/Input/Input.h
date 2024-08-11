@@ -13,7 +13,10 @@ public:
 
     static bool IsMouseButtonPressed(MouseButtonCode button);
     static bool IsMouseButtonReleased(MouseButtonCode button);
+
     static std::pair<int, int> GetMousePosition();
+    static int GetMouseX();
+    static int GetMouseY();
 };
 
 } // namespace Vortex

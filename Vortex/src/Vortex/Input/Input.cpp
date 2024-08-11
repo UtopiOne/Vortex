@@ -37,4 +37,18 @@ std::pair<int, int> Input::GetMousePosition() {
     return {x, y};
 }
 
+int Input::GetMouseX() {
+    int x;
+    uint32 currentMouseX = SDL_GetMouseState(&x, nullptr);
+
+    return x;
+}
+
+int Input::GetMouseY() {
+    int y;
+    uint32 currentMouseX = SDL_GetMouseState(&y, nullptr);
+
+    return y;
+}
+
 } // namespace Vortex
