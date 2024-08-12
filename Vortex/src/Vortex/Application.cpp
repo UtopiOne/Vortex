@@ -1,4 +1,5 @@
 #include "Vortex/DebugUI/DebugUILayer.h"
+#include "Vortex/Renderer/RenderCommand.h"
 #include "VortexPCH.h"
 
 #include "Vortex/Application.h"
@@ -76,8 +77,8 @@ void Application::Run() {
         double deltaTime = (Time::GetTimeInMilliseconds() - m_TicksCount) / 1000.0;
         m_TicksCount = Time::GetTimeInMilliseconds();
 
-        glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        RenderCommand::Clear();
+        RenderCommand::SetClearColor();
 
         glBindVertexArray(m_VertexArray);
         glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);

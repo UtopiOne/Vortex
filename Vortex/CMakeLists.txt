@@ -81,7 +81,15 @@ target_sources(
           ${VT_DIR}/include/Vortex/Input/Keycodes.h
           # Debug UI
           ${VT_DIR}/src/Vortex/DebugUI/DebugUILayer.cpp
-          ${VT_DIR}/include/Vortex/DebugUI/DebugUILayer.h)
+          ${VT_DIR}/include/Vortex/DebugUI/DebugUILayer.h
+          # Renderer
+          ${VT_DIR}/src/Vortex/Renderer/RenderCommand.cpp
+          ${VT_DIR}/include/Vortex/Renderer/RenderCommand.h
+          ${VT_DIR}/include/Vortex/Renderer/RendererAPI.h
+          ${VT_DIR}/src/Vortex/Renderer/RendererAPI.cpp
+          # OpenGL platform
+          ${VT_DIR}/include/Platform/OpenGL/OpenGLRendererAPI.h
+          ${VT_DIR}/src/Platform/OpenGL/OpenGLRendererAPI.cpp)
 target_include_directories(vortex PUBLIC ${VT_DIR}/include)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
